@@ -1,273 +1,453 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liman Engineering & Building</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vision Beyond Tomorrow</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-/* Base Reset */
-*{margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif;}
-body{line-height:1.6; background:#f5f5f5; color:#333;}
-a{text-decoration:none; color:inherit;}
-img{max-width:100%; display:block;}
-.container{width:90%; max-width:1200px; margin:auto;}
 
-/* Header */
-header{
-    position:fixed; 
-    width:100%; 
-    top:0; 
-    left:0; 
-    background:rgba(10,25,70,0.95); 
-    color:#fff; 
-    z-index:1000; 
-    padding:15px 0; 
-    box-shadow:0 5px 15px rgba(0,0,0,0.2); 
-    transition:0.3s;
-}
-header.scrolled{background:#155bb5;}
-nav{display:flex; justify-content:space-between; align-items:center;}
-.logo h1{color:#FFD700;}
-nav ul{display:flex; list-style:none;}
-nav ul li{margin-left:25px; position:relative;}
-nav ul li a{
-    font-weight:600; display:flex; align-items:center; gap:8px; padding:8px 12px; 
-    border-radius:5px; transition:0.3s;
-}
-nav ul li a:hover{background:#FFD700; color:#0A1946;}
-nav ul li a i{transition:0.3s;}
-nav ul li a:hover i{transform:rotate(360deg); color:#0A1946;}
-
-/* Mobile menu */
-.mobile-menu{display:none; font-size:1.8rem; cursor:pointer; color:#FFD700;}
-@media(max-width:768px){
-    nav ul{
-        position:fixed; top:70px; left:-100%; width:100%; height:calc(100vh-70px);
-        background:#0A1946; flex-direction:column; align-items:center; justify-content:center; gap:30px; transition:0.3s;
-    }
-    nav ul.show{left:0;}
-    nav ul li a{font-size:1.2rem;}
-    .mobile-menu{display:block;}
-    .service-cards, .project-slider{flex-direction:column;}
-    .project-slider{overflow-x:auto; padding-bottom:15px;}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
 }
 
-/* Hero Section */
+body{
+    background:#050816;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top left,#00f7ff33,transparent 30%),
+    radial-gradient(circle at bottom right,#ff00ff22,transparent 30%);
+    z-index:-2;
+}
+
+.stars{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity:0.2;
+    z-index:-1;
+}
+
+/* Hero */
+
 .hero{
-    min-height:100vh; 
-    background: linear-gradient(rgba(10,25,70,0.7), rgba(10,25,70,0.7)), url('https://picsum.photos/1600/900?random=1') center/cover no-repeat; 
-    display:flex; justify-content:center; align-items:center; 
-    color:#fff; 
-    position:relative; 
-    overflow:hidden;
-    padding-top:120px; /* header space */
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px 20px;
 }
+
 .hero-content{
-    position:relative; 
-    text-align:center; 
-    z-index:2; 
-    animation:fadeIn 2s;
+    max-width:900px;
 }
-.hero-content h1{font-size:3rem; margin-bottom:15px;}
-.hero-content h1 span{color:#FFD700;}
-.hero-content p{margin-bottom:25px; font-size:1.2rem;}
-.hero-content a{padding:12px 30px; background:#FFD700; color:#0A1946; font-weight:bold; border-radius:5px; transition:0.3s;}
-.hero-content a:hover{background:#FFC107;}
 
-/* About Section */
-section{padding:80px 0;}
-.about{display:flex; flex-wrap:wrap; align-items:center; gap:40px;}
-.about img{flex:1; border-radius:10px; animation:slideInLeft 1.5s;}
-.about-text{flex:1; animation:slideInRight 1.5s;}
-.about-text h2{font-size:2rem; margin-bottom:20px; color:#0A1946;}
-.about-text p{margin-bottom:15px; color:#555;}
+.hero h1{
+    font-size:4rem;
+    line-height:1.2;
+    margin-bottom:20px;
+    background:linear-gradient(90deg,#00e5ff,#8b5cf6,#ff00c8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glow 3s infinite alternate;
+}
 
-/* Services Section */
-.services{text-align:center;}
-.services h2{margin-bottom:50px; font-size:2.2rem; color:#0A1946;}
-.service-cards{display:flex; flex-wrap:wrap; justify-content:center; gap:30px;}
+@keyframes glow{
+    from{
+        filter:drop-shadow(0 0 10px #00e5ff);
+    }
+    to{
+        filter:drop-shadow(0 0 25px #ff00c8);
+    }
+}
+
+.hero p{
+    color:#cbd5e1;
+    font-size:1.2rem;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 28px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.4s;
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,#00e5ff,#8b5cf6);
+    color:white;
+}
+
+.btn-secondary{
+    border:2px solid #8b5cf6;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 10px 25px rgba(139,92,246,0.5);
+}
+
+/* Fun Fact */
+
+.fun-fact-box{
+    margin-top:50px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:35px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    animation:float 4s ease-in-out infinite;
+}
+
+.fun-fact-box h2{
+    margin-bottom:20px;
+    color:#00e5ff;
+    font-size:2rem;
+}
+
+.fun-fact-box p{
+    font-size:1.2rem;
+    line-height:1.8;
+    color:#e2e8f0;
+}
+
+#factBtn{
+    margin-top:25px;
+    padding:14px 28px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(90deg,#00e5ff,#8b5cf6,#ff00c8);
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+#factBtn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 25px rgba(255,0,200,0.5);
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(0px);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* Sections */
+
+.section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:60px;
+    color:#00e5ff;
+}
+
+/* Cards */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
 .card{
-    background:#0A1946; color:#fff; padding:30px; border-radius:15px; 
-    box-shadow:0 10px 30px rgba(0,0,0,0.2); transition:transform 0.4s, box-shadow 0.4s;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:30px;
+    border-radius:25px;
+    backdrop-filter:blur(10px);
+    transition:0.4s;
 }
-.card:hover{transform:translateY(-15px); box-shadow:0 15px 40px rgba(0,0,0,0.3);}
-.card i{font-size:3rem; color:#FFD700; margin-bottom:15px;}
-.card h3{margin-bottom:10px;}
-.card p{color:#fff;}
 
-/* Projects Section */
-.projects{background:#f4f4f4; text-align:center;}
-.projects h2{margin-bottom:50px; color:#0A1946;}
-.project-slider{display:flex; overflow-x:auto; scroll-behavior:smooth; gap:20px; padding-bottom:20px;}
-.project-slider::-webkit-scrollbar{height:10px;}
-.project-slider::-webkit-scrollbar-thumb{background:#0A1946; border-radius:5px;}
-.project{flex:0 0 300px; background:#fff; border-radius:10px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:transform 0.3s;}
-.project:hover{transform:scale(1.05);}
-.project img{border-radius:10px 10px 0 0;}
-.project h3{padding:15px;}
+.card:hover{
+    transform:translateY(-10px);
+    border-color:#00e5ff;
+    box-shadow:0 0 25px rgba(0,229,255,0.3);
+}
 
-/* Contact Section */
-.contact{text-align:center;}
-.contact h2{margin-bottom:40px; color:#0A1946;}
-.contact form{max-width:600px; margin:auto; display:flex; flex-direction:column; gap:15px;}
-.contact input,.contact textarea{padding:15px; border-radius:5px; border:1px solid #ccc; width:100%;}
-.contact button{padding:15px; background:#0A1946; color:#FFD700; font-weight:bold; border:none; border-radius:5px; cursor:pointer; transition:0.3s;}
-.contact button:hover{background:#1A237E; color:#FFC107;}
+.card h3{
+    margin-bottom:15px;
+    font-size:1.4rem;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+/* Quote */
+
+.quote-box{
+    margin-top:70px;
+    text-align:center;
+    padding:40px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+.quote-box h2{
+    color:#facc15;
+    margin-bottom:20px;
+}
+
+.quote{
+    font-size:1.5rem;
+    font-style:italic;
+    line-height:1.8;
+}
 
 /* Footer */
-footer{background:#0A1946; color:#fff; text-align:center; padding:20px 0;}
 
-/* Animations */
-@keyframes fadeIn{from{opacity:0} to{opacity:1}}
-@keyframes slideInLeft{from{opacity:0; transform:translateX(-50px);} to{opacity:1; transform:translateX(0);}}
-@keyframes slideInRight{from{opacity:0; transform:translateX(50px);} to{opacity:1; transform:translateX(0);}}
-.typing{border-right:.1em solid #FFD700; white-space:nowrap; overflow:hidden;}
-@media(max-width:768px){
-    .about{flex-direction:column; text-align:center}
-    .about img{margin:0 0 20px 0}
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,0.1);
 }
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.6rem;
+}
+
+.hero p{
+    font-size:1rem;
+}
+
+.section-title{
+    font-size:2rem;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<!-- Header -->
-<header id="header">
-    <div class="container">
-        <nav>
-            <div class="logo"><h1>Liman Engineering</h1></div>
-            <div class="mobile-menu" id="mobile-menu"><i class="fas fa-bars"></i></div>
-            <ul>
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
-                <li><a href="#projects"><i class="fas fa-building"></i> Projects</a></li>
-                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<div class="stars"></div>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h1><span class="typing"></span></h1>
-        <p>Professional Civil & Structural Engineering Solutions for Your Home or Company</p>
-        <a href="#contact">Get a Quote</a>
-    </div>
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Vision Beyond Tomorrow</h1>
+
+<p>
+A futuristic digital experience created to inspire innovation,
+creativity, technology, and limitless imagination.
+This project represents how ideas can transform the future
+through design, intelligence, and human creativity.
+</p>
+
+<div class="buttons">
+<a href="#ideas" class="btn btn-primary">Explore Creativity</a>
+<a href="#future" class="btn btn-secondary">Future Vision</a>
+</div>
+
+<!-- FUN FACT SECTION -->
+
+<div class="fun-fact-box">
+
+<h2>⚡ Mind-Blowing Fun Facts</h2>
+
+<p id="fact">
+Your brain generates enough electricity to power a small light bulb.
+</p>
+
+<button onclick="changeFact()" id="factBtn">
+Reveal Another Fact 🚀
+</button>
+
+</div>
+
+</div>
 </section>
 
-<!-- About Section -->
-<section class="about" id="about">
-    <div class="container">
-        <img src="https://picsum.photos/800/500?random=2" alt="About Us">
-        <div class="about-text">
-            <h2>About Us</h2>
-            <p>At Liman Engineering, we build safe, durable, and beautiful homes for families and companies. Our experienced team ensures high-quality construction with attention to detail and innovative designs.</p>
-            <p>We turn your dream house into reality while keeping it affordable and on schedule.</p>
-        </div>
-    </div>
+<!-- CREATIVE IDEAS -->
+
+<section class="section" id="ideas">
+
+<h2 class="section-title">Creative Concepts</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🌍 AI Smart Cities</h3>
+<p>
+Imagine cities powered completely by AI where traffic,
+energy, healthcare, and safety are optimized automatically
+to create a smarter and cleaner future.
+</p>
+</div>
+
+<div class="card">
+<h3>🚀 Space Learning</h3>
+<p>
+Future students could attend virtual classrooms from anywhere
+in the world using holograms and immersive technology.
+</p>
+</div>
+
+<div class="card">
+<h3>🌱 Green Technology</h3>
+<p>
+Combining renewable energy with intelligent systems can
+help solve climate challenges and protect the Earth.
+</p>
+</div>
+
+<div class="card">
+<h3>🤖 Human + AI</h3>
+<p>
+AI should not replace creativity — it should amplify human
+imagination and help people achieve greater possibilities.
+</p>
+</div>
+
+</div>
+
+<div class="quote-box">
+
+<h2>Creative Philosophy</h2>
+
+<p class="quote">
+"The future belongs to those who dare to imagine beyond limits."
+</p>
+
+</div>
+
 </section>
 
-<!-- Services Section -->
-<section class="services" id="services">
-    <div class="container">
-        <h2>Our Services</h2>
-        <div class="service-cards">
-            <div class="card">
-                <i class="fas fa-home"></i>
-                <h3>Residential Construction</h3>
-                <p>Building houses from foundation to finish with modern architecture.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-building"></i>
-                <h3>Commercial Projects</h3>
-                <p>Construction for offices, shops, and commercial buildings with design focus.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-tools"></i>
-                <h3>Renovation & Repairs</h3>
-                <p>Upgrade your home or office with modern renovations and repairs.</p>
-            </div>
-        </div>
-    </div>
+<!-- FUTURE SECTION -->
+
+<section class="section" id="future">
+
+<h2 class="section-title">Why Creativity Matters</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>💡 Innovation</h3>
+<p>
+Every great invention begins with a creative idea.
+Creativity transforms imagination into reality.
+</p>
+</div>
+
+<div class="card">
+<h3>🧠 Problem Solving</h3>
+<p>
+Creative thinkers can discover unique solutions to global
+challenges and improve people's lives.
+</p>
+</div>
+
+<div class="card">
+<h3>✨ Inspiration</h3>
+<p>
+Creative projects inspire others to dream bigger and
+believe in their own potential.
+</p>
+</div>
+
+</div>
+
 </section>
 
-<!-- Projects Section -->
-<section class="projects" id="projects">
-    <div class="container">
-        <h2>Our Projects</h2>
-        <div class="project-slider">
-            <div class="project">
-                <img src="https://picsum.photos/300/200?random=3" alt="Project 1">
-                <h3>Luxury Villa</h3>
-            </div>
-            <div class="project">
-                <img src="https://picsum.photos/300/200?random=4" alt="Project 2">
-                <h3>Modern Office</h3>
-            </div>
-            <div class="project">
-                <img src="https://picsum.photos/300/200?random=5" alt="Project 3">
-                <h3>Residential Home</h3>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="contact" id="contact">
-    <div class="container">
-        <h2>Contact Us</h2>
-        <form>
-            <input type="text" placeholder="Your Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-</section>
-
-<!-- Footer -->
 <footer>
-    <p>&copy; 2026 Liman Engineering. All Rights Reserved.</p>
+Designed & Developed by a Young Creative Visionary 🚀
 </footer>
 
 <script>
-// Typing effect
-const typingText = ["We Build Your Dreams!", "Professional Engineering Solutions!", "Safe, Modern & Reliable Construction!"];
-let i=0, j=0, currentText='', isDeleting=false;
-function type(){
-    if(i>=typingText.length) i=0;
-    currentText = typingText[i].substring(0,j);
-    document.querySelector('.typing').textContent = currentText;
-    if(!isDeleting && j<typingText[i].length){j++; setTimeout(type,100);}
-    else if(isDeleting && j>0){j--; setTimeout(type,50);}
-    else{isDeleting=!isDeleting; if(!isDeleting)i++; setTimeout(type,1000);}
+
+const facts = [
+
+"Octopuses have three hearts and blue blood.",
+
+"Bananas are technically berries, but strawberries are not.",
+
+"Sharks existed before trees appeared on Earth.",
+
+"The internet travels through underwater cables across oceans.",
+
+"There are more stars in the universe than grains of sand on Earth.",
+
+"Some turtles can breathe through their backsides.",
+
+"AI can now generate art, music, videos, and entire virtual worlds.",
+
+"A day on Venus is longer than a year on Venus.",
+
+"Your brain processes images faster than you blink.",
+
+"Honey never spoils and can last for thousands of years."
+
+];
+
+let currentFact = 0;
+
+function changeFact(){
+
+currentFact++;
+
+if(currentFact >= facts.length){
+currentFact = 0;
 }
-type();
 
-// Smooth scroll
-document.querySelectorAll('nav ul li a').forEach(link=>{
-    link.addEventListener('click', e=>{
-        e.preventDefault();
-        document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-        if(navUl.classList.contains('show')) navUl.classList.remove('show');
-    });
-});
+document.getElementById("fact").innerText = facts[currentFact];
 
-// Change header on scroll
-const header = document.getElementById('header');
-window.addEventListener('scroll', ()=>{
-    if(window.scrollY>50) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-});
+}
 
-// Mobile menu toggle
-const mobileMenu = document.getElementById('mobile-menu');
-const navUl = document.querySelector('nav ul');
-mobileMenu.addEventListener('click', ()=>{
-    navUl.classList.toggle('show');
-});
 </script>
+
 </body>
-  </html>
+</html>
